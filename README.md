@@ -1,4 +1,4 @@
-## Coffee Shop Full Stack
+## Introduction
 
 The coffee shop app is a new digitally enabled cafe for udacity students to order drinks, socialize, and study hard. The full stack drink menu application does the following:
 
@@ -37,13 +37,15 @@ This will install all of the required packages we selected within the `requireme
 
 - [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension used to handle cross-origin requests from the frontend server. 
 
+- [Auth0](https://auth0.com/docs/getting-started/overview) Provides authentication and authorization as a service
+
 ## Database Setup
 
 The app is running with SQLite. No setup needs to be performed.
 
 ## Running the server
 
-From within the `backend` directory to run the server, execute:
+From within the `backend/src` directory to run the server, execute:
 
 ```bash
 export FLASK_APP=api.py
@@ -79,7 +81,7 @@ To install Sphinx, reference the documents at https://www.sphinx-doc.org/en/mast
 For example:
 
 ```bash
- pip install -U sphinx
+pip install -U sphinx
 ```
 
 Install dependencies by navigating to the `root` project directory and running:
@@ -114,13 +116,18 @@ cp -R ./docs/build/latex/coffeeaapi.pdf .
 
 The following APIs are available. Detailed html documentation can be found in the 'docs' folder.
 
-
+- GET /drinks
+- GET /drinks-detail
+- POST /drinks
+- PATCH /drinks/<id>
+- DELETE /drinks/<id>
 
 
 ## Error Handling
 
 Errors are returned as JSON objects in the following format:
 ```bash
+
 {
     "success": False, 
     "error": 400,
@@ -138,13 +145,9 @@ The API will return three error types when requests fail:
 
 ## Testing
 
-Testing is done with Postman
+Testing is done with Postman. Load and run the test collection: 
+.backend/udacity-fsnd-udaspicelatte.postman_collection.json
 
-To run postman. Run:
-
-```bash
-do somthing....... TODO:
-```
 
 ## Full Stack coffee API Frontend
 
@@ -164,19 +167,16 @@ The Ionic Command Line Interface is required to serve and build the frontend. In
 This project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the `frontend` directory of this repository. After cloning, open your terminal and run:
 
 ```bash
+
 npm install
 ```
 
-## Required Tasks
 
-## Running Your Frontend in Dev Mode
+## Running the Frontend 
 
-Ionic ships with a useful development server which detects changes and transpiles as you work. The application is then accessible through the browser on a localhost port. To run the development server, cd into the `frontend` directory and run:
+To run Ionic from the `frontend` directory run:
 
 ```bash
+
 ionic serve
 ```
-
->_tip_: Do not use **ionic serve**  in production. Instead, build Ionic into a build artifact for your desired platforms.
-[Checkout the Ionic docs to learn more](https://ionicframework.com/docs/cli/commands/build)
-

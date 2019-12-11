@@ -1,6 +1,10 @@
 
-Coffee Shop Full Stack
-----------------------
+.. role:: raw-html-m2r(raw)
+   :format: html
+
+
+Intoduction
+-----------
 
 The coffee shop app is a new digitally enabled cafe for udacity students to order drinks, socialize, and study hard. The full stack drink menu application does the following:
 
@@ -17,15 +21,12 @@ Installing Dependencies
 
 Python 3.7
 
-.. code-block::
+This project uses python 3.7.
 
+To Install: `Python <https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python>`_
 
-   This project uses python 3.7.
-
-   To Install: `Python <https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python>`_
-
-   PIP Dependencies
-   ~~~~~~
+PIP Dependencies
+~~~~~~~~~~~~~~~~
 
 Once you have your virtual environment setup and running, install dependencies by navigating to the root directory and running:
 
@@ -48,6 +49,9 @@ Key Dependencies
 * 
   `Flask-CORS <https://flask-cors.readthedocs.io/en/latest/#>`_ is the extension used to handle cross-origin requests from the frontend server. 
 
+* 
+  `Auth0 <https://auth0.com/docs/getting-started/overview>`_ Provides authentication and authorization as a service
+
 Database Setup
 --------------
 
@@ -56,11 +60,11 @@ The app is running with SQLite. No setup needs to be performed.
 Running the server
 ------------------
 
-From within the ``backend`` directory to run the server, execute:
+From within the ``backend/src`` directory to run the server, execute:
 
 .. code-block:: bash
 
-   export FLASK_APP=flaskr
+   export FLASK_APP=api.py
    export FLASK_ENV=development
    flask run
 
@@ -73,28 +77,26 @@ Opening the API Documentation
 Documentation is generated with Sphinx.
 
 HTML Documentation
+^^^^^^^^^^^^^^^^^^
 
-.. code-block::
-
-
-   From the root folder, open the index file in a browser
+From the root folder, open the index file in a browser
 
    .. code-block:: bash
 
       ./docs/build/html/index.html
 
-   PDF Documentation
-   ~~~~~~~~~~~~~~~~~
+PDF Documentation
+~~~~~~~~~~~~~~~~~
 
-   The PDF version of the documentation is located in the root project directory. Named coffeeapi.pdf
+The PDF version of the documentation is located in the root project directory. Named coffeeapi.pdf
 
-   Generating documentation
-   ^^^^^^^^^^^^^^^^^^^^^^^^
+Generating documentation
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Documentation is generated with Sphinx.
+Documentation is generated with Sphinx.
 
-   Installing Sphinx and support tools
-   ~~~~~~~~~~~~~~~~~
+Installing Sphinx and support tools
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To install Sphinx, reference the documents at https://www.sphinx-doc.org/en/master/usage/installation.html
 
@@ -103,6 +105,7 @@ For example:
 .. code-block:: bash
 
     pip install -U sphinx
+
 
 Install dependencies by navigating to the ``root`` project directory and running:
 
@@ -115,81 +118,81 @@ Install dependencies by navigating to the ``root`` project directory and running
    pip install -r requirements.txt
 
 Generating the documentation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+Generate the documentation with the following commands:
 
+.. code-block:: bash
 
-   Generate the documentation with the following commands:
+  # From the root project directory
+  # Convert readme to rst to be included in generated docs
+  m2r README.md README.rst --overwrite
+  cp -R README.rst ./docs/source
+  cd ./docs
+  make html
+  # Make pdf
+  make latexpdf
+  cd ..
+  cp -R ./docs/build/latex/coffeeaapi.pdf .
 
-   .. code-block:: bash
+API End Points
+--------------
 
-      # From the root project directory
-      # Convert readme to rst to be included in generated docs
-      m2r README.md README.rst --overwrite
-      cp -R README.rst ./docs/source
-      cd ./docs
-      make html
-      # Make pdf
-      make latexpdf
-      cd ..
-      cp -R ./docs/build/latex/coffeeaapi.pdf .
-
-   API End Points
-   --------------
-
-   The following APIs are available. Detailed html documentation can be found in the 'docs' folder.
-
-   Error Handling
-   --------------
-
-   Errors are returned as JSON objects in the following format:
-
-   .. code-block:: bash
-
-      {
-          "success": False, 
-          "error": 400,
-          "message": "Bad Request"
-      }
-
-   The API will return three error types when requests fail:
+The following APIs are available. Detailed html documentation can be found in the 'docs' folder.
 
 
-   * 400: Bad Request
-   * 404: Resource Not Found
-   * 405: Method Not Allowed
-   * 422: Not Processable 
-   * 500: Internal Server Error
+* GET /drinks
+* GET /drinks-detail
+* POST /drinks
+* PATCH /drinks/\ :raw-html-m2r:`<id>`
+* DELETE /drinks/\ :raw-html-m2r:`<id>`
 
-   Testing
-   -------
+Error Handling
+--------------
 
-   Testing is done with Postman
+Errors are returned as JSON objects in the following format:
 
-   To run postman. Run:
+.. code-block:: bash
 
-   .. code-block:: bash
+  {
+      "success": False, 
+      "error": 400,
+      "message": "Bad Request"
+  }
 
-      do somthing....... TODO:
+The API will return three error types when requests fail:
 
-   Full Stack coffee API Frontend
-   ------------------------------
 
-   Installing Dependencies
-   ^^^^^^^^^^^^^^^^^^^^^^^
+* 400: Bad Request
+* 404: Resource Not Found
+* 405: Method Not Allowed
+* 422: Not Processable 
+* 500: Internal Server Error
 
-   Installing Node and NPM
-   ~~~~~~~~~~~~~~~~~~~~~~~
+Testing
+-------
 
-   This app depends on Nodejs and Node Package Manager (NPM). Before continuing, you must download and install Node (the download includes NPM) from `https://nodejs.com/en/download <https://nodejs.org/en/download/>`_.
+Testing is done with Postman. Load and run the test collection: 
+.backend/udacity-fsnd-udaspicelatte.postman_collection.json
 
-   Installing Ionic Client
-   ~~~~~~~~~~~~~~~~~~~~~~~
+Full Stack coffee API Frontend
+------------------------------
 
-   The Ionic Command Line Interface is required to serve and build the frontend. Instructions for installing the CLI  is in the `Ionic Framework Docs <https://ionicframework.com/docs/installation/cli>`_.
+Installing Dependencies
+^^^^^^^^^^^^^^^^^^^^^^^
 
-   Installing project dependencies
-   ~~~
+Installing Node and NPM
+~~~~~~~~~~~~~~~~~~~~~~~
+
+This app depends on Nodejs and Node Package Manager (NPM). Before continuing, you must download and install Node (the download includes NPM) from `https://nodejs.com/en/download <https://nodejs.org/en/download/>`_.
+
+Installing Ionic Client
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The Ionic Command Line Interface is required to serve and build the frontend. Instructions for installing the CLI  is in the `Ionic Framework Docs <https://ionicframework.com/docs/installation/cli>`_.
+
+Installing project dependencies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the ``frontend`` directory of this repository. After cloning, open your terminal and run:
 
@@ -197,18 +200,12 @@ This project uses NPM to manage software dependencies. NPM Relies on the package
 
    npm install
 
-Required Tasks
---------------
+Running the Frontend
+~~~~~~~~~~~~~~~~~~~~
 
-Running Your Frontend in Dev Mode
----------------------------------
-
-Ionic ships with a useful development server which detects changes and transpiles as you work. The application is then accessible through the browser on a localhost port. To run the development server, cd into the ``frontend`` directory and run:
+To run Ionic from the ``frontend`` directory run:
 
 .. code-block:: bash
 
    ionic serve
 
-..
-   *tip*\ : Do not use **ionic serve**  in production. Instead, build Ionic into a build artifact for your desired platforms.
-   `Checkout the Ionic docs to learn more <https://ionicframework.com/docs/cli/commands/build>`_
