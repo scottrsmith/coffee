@@ -1,0 +1,2 @@
+# Init the sphinx project
+sphinx-quickstart
